@@ -10,6 +10,8 @@ module AwsMissingTools
       end
 
       it 'sets default options' do
+        ENV['AWS_ACCESS_KEY'] = 'testkey'
+        ENV['AWS_SECRET_KEY'] = 'testsecretkey'
         options = aws_ha_release.validate_options({ as_group_name: 'test_group' })
         expect(options[:elb_timeout]).not_to be_nil
         expect(options[:region]).not_to be_nil
