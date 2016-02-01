@@ -41,6 +41,10 @@ module AwsMissingTools
         opts.on('-n', '--num-simultaneous-instances NUM', 'Number of instances to simultaneously bring up per iteration') do |v|
           options[:num_simultaneous_instances] = v
         end
+
+        opts.on('-l', '--log FILE', 'Log file output (defaults to STDOUT)') do |v|
+          options[:num_simultaneous_instances] = v
+        end
       end.parse!(argv)
 
       options
@@ -55,8 +59,8 @@ module AwsMissingTools
         inservice_time_allowed: 300,
         min_inservice_time: 30,
         num_simultaneous_instances: 1,
-        log_output: "log/#{_options[:as_group_name]}_cycling.log",
-        log_level: Logger::WARN
+        log_output: STDOUT,
+        log_level: Logger::INFO
       }.merge(_options)
 
       if options[:aws_secret_key] && options[:aws_access_key].nil? || options[:aws_access_key] && options[:aws_secret_key].nil?
