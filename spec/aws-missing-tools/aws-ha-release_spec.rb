@@ -47,8 +47,8 @@ module AwsMissingTools
           inservice_time_allowed: 300,
           min_inservice_time: 30,
           num_simultaneous_instances: 1,
-          log_output: 'log/test_group_cycling.log',
-          log_level: 2,
+          log_output: STDOUT,
+          log_level: Logger::INFO,
           as_group_name: 'test_group',
           aws_access_key: 'testkey',
           aws_secret_key: 'secretkey'
